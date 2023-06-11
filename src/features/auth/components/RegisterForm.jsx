@@ -42,22 +42,6 @@ export default function RegisterForm({ onSuccess }) {
       toast.error(err);
     }
   };
-  // const handleSubmitForm = async (e) => {
-  //   try {
-  //     e.preventDefault();
-  //     const result = validateRegister(input);
-  //     if (result) {
-  //       return setError(result);
-  //     }
-  //     setError({});
-  //     await dispatch(register(input)).unwrap();
-  //     toast.success("register successfully");
-  //     onSuccess();
-  //   } catch (err) {
-  //     console.log(err);
-  //     toast.error("An error occurred during registration. Please try again.");
-  //   }
-  // };
 
   return (
     <form onSubmit={handleSubmitForm}>

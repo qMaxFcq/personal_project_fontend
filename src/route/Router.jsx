@@ -4,8 +4,7 @@ import RegisterPage from "../pages/RegisterPage";
 import Redirect from "../features/auth/components/Redirect";
 import ProtectedRoute from "../features/auth/components/ProtectedRoute";
 import Container from "../layouts/Container";
-import HomePage from "../pages/Homepage";
-
+import HomePage from "../pages/HomePage";
 const router = createBrowserRouter([
   {
     path: "/login",
@@ -32,7 +31,7 @@ const router = createBrowserRouter([
     ),
     children: [
       {
-        path: "/",
+        path: "/home",
         element: <HomePage />,
       },
     ],
