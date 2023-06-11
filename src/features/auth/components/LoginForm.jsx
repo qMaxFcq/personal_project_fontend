@@ -28,7 +28,7 @@ export default function LoginForm() {
   };
 
   return (
-    <form onClick={handleSubmitForm(onSubmit)}>
+    <form onSubmit={handleSubmitForm(onSubmit)}>
       <div className="grid gap-2 font-mono">
         <div>
           <LoginInput
@@ -40,7 +40,6 @@ export default function LoginForm() {
           />
           <InputErrorMessage message={error.adminName} />
         </div>
-
         <div>
           <LoginInput
             placeholder="Password"
@@ -52,10 +51,13 @@ export default function LoginForm() {
           <InputErrorMessage message={error.password} />
         </div>
       </div>
-      <div>
+      <div className="mb-2">
         <button className="bg-blue-500 text-white w-full leading-[3rem] rounded-md text-xl font-bold">
-          login
+          Login
         </button>
+      </div>
+      <div className="bg-green-500 text-white w-full leading-[3rem] rounded-md text-xl font-bold">
+        <a href="http://localhost:5173/register">Register</a>
       </div>
     </form>
   );
