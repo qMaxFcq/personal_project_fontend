@@ -29,7 +29,7 @@ export default function LoginForm() {
 
   return (
     <form onClick={handleSubmitForm(onSubmit)}>
-      <div className="grid gap-2">
+      <div className="grid gap-2 font-mono">
         <div>
           <LoginInput
             placeholder="Admin Name"
@@ -51,11 +51,11 @@ export default function LoginForm() {
           />
           <InputErrorMessage message={error.password} />
         </div>
-        <div>
-          <button className="bg-blue-500 text-white w-full leading-[3rem] rounded-md text-xl font-bold">
-            login
-          </button>
-        </div>
+      </div>
+      <div>
+        <button className="bg-blue-500 text-white w-full leading-[3rem] rounded-md text-xl font-bold">
+          login
+        </button>
       </div>
     </form>
   );

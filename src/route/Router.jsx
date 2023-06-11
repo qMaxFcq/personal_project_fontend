@@ -1,5 +1,6 @@
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import LoginPage from "../pages/LoginPage";
+import RegisterPage from "../pages/RegisterPage";
 import Redirect from "../features/auth/components/Redirect";
 import ProtectedRoute from "../features/auth/components/ProtectedRoute";
 import Container from "../layouts/Container";
@@ -11,6 +12,14 @@ const router = createBrowserRouter([
     element: (
       <Redirect>
         <LoginPage />
+      </Redirect>
+    ),
+  },
+  {
+    path: "/register",
+    element: (
+      <Redirect>
+        <RegisterPage />
       </Redirect>
     ),
   },
