@@ -27,7 +27,7 @@ export const addCustomer = createAsyncThunk(
   async (input, thunkApi) => {
     try {
       const res = await authService.addcustomer(input);
-      setAccessToken(res.data.accessToken);
+      // setAccessToken(res.data.accessToken);
     } catch (err) {
       return thunkApi.rejectWithValue(err.response.data.message);
     }

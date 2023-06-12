@@ -20,7 +20,7 @@ const initialInput = {
   statusId: "",
 };
 
-export default function AddCustomerForm() {
+export default function AddCustomerForm({ onSuccess }) {
   const [input, setInput] = useState(initialInput);
   const [error, setError] = useState({});
 

@@ -1,6 +1,7 @@
 import createClasses from "../../../utils/create-classes";
 
 export default function RegisterInput({
+  type,
   placeholder,
   value,
   onChange,
@@ -17,7 +18,7 @@ export default function RegisterInput({
   );
   return (
     <input
-      type="text"
+      type={type}
       className={className}
       placeholder={placeholder}
       value={value}

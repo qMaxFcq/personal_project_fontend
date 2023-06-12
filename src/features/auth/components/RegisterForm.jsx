@@ -48,6 +48,7 @@ export default function RegisterForm({ onSuccess }) {
       <div className="grid gap-3 font-mono">
         <div>
           <RegisterInput
+            type="text"
             name="adminName"
             placeholder="Admin Name"
             value={input.adminName}
@@ -58,6 +59,7 @@ export default function RegisterForm({ onSuccess }) {
         </div>
         <div className="flex gap-3">
           <RegisterInput
+            type="text"
             name="firstName"
             placeholder="First Name"
             value={input.firstName}
@@ -66,6 +68,7 @@ export default function RegisterForm({ onSuccess }) {
           />
 
           <RegisterInput
+            type="text"
             name="lastName"
             placeholder="Last Name"
             value={input.lastName}
@@ -90,6 +93,7 @@ export default function RegisterForm({ onSuccess }) {
         </div>
         <div>
           <RegisterInput
+            type="password"
             name="password"
             placeholder="Password"
             value={input.password}
@@ -100,6 +104,7 @@ export default function RegisterForm({ onSuccess }) {
         </div>
         <div>
           <RegisterInput
+            type="password"
             name="confirmpassword"
             placeholder="Confirm Password"
             value={input.confirmpassword}

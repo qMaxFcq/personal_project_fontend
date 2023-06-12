@@ -1,6 +1,7 @@
 import createClasses from "../../../utils/create-classes";
 
 export default function LoginInput({
+  type,
   placeholder,
   value,
   onChange,
@@ -15,7 +16,7 @@ export default function LoginInput({
   );
   return (
     <input
-      type="text"
+      type={type}
       className={className}
       placeholder={placeholder}
       value={value}

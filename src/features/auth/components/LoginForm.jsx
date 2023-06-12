@@ -32,6 +32,7 @@ export default function LoginForm() {
       <div className="grid gap-2 font-mono">
         <div>
           <LoginInput
+            type="text"
             placeholder="Admin Name"
             name="adminName"
             value={input.adminName}
@@ -42,6 +43,7 @@ export default function LoginForm() {
         </div>
         <div>
           <LoginInput
+            type="password"
             placeholder="Password"
             name="password"
             value={input.password}
