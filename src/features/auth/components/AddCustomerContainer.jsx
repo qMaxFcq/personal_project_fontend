@@ -8,10 +8,10 @@ export default function AddCustomerContainer() {
   return (
     <div>
       <button
-        className="bg-green-500 text-white rounded-md px-4 leading-[3rem] font-mono hover:bg-green-600 tracking-wide "
+        className="bg-blue-500 text-white rounded-md px-4 leading-[3rem] font-mono hover:bg-blue-600 tracking-wide mb-5 "
         onClick={() => setOpen(true)}
       >
-        ADD Customer
+        Add Customer
       </button>
       <Modal title="Add Customer" open={open} onClose={() => setOpen(false)}>
         <AddCustomerForm onSuccess={() => setOpen(false)} />
