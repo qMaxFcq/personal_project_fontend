@@ -2,6 +2,7 @@ import React from "react";
 import { toast } from "react-toastify";
 import axios from "axios";
 import { useEffect, useState } from "react";
+import CustomerList from "./CustomerList";
 
 export default function CustomerMain() {
   const [datas, setData] = useState([]);
@@ -14,34 +15,16 @@ export default function CustomerMain() {
         },
       });
       setData(res.data);
-      console.log(res.data);
+      // console.log(res.data);
     };
     fetchCustomer();
   }, []);
+
   return (
-    <div className="max-w-[100rem] mx-auto px-8 py-6 flex justify-center ">
-      <table className="">
-        <thead>
-          <tr>
-            <th>No.</th>
-            <th>First Name</th>
-            <th>last Name</th>
-            <th>Type</th>
-            <th>Status</th>
-          </tr>
-        </thead>
-        <tbody>
-          {datas.map((data) => (
-            <tr key={data.id}>
-              <td>{data.customerId}</td>
-              <td>{data.firstName}</td>
-              <td>{data.lastName}</td>
-              <td>{data.typeId}</td>
-              <td>{data.statusId}</td>
-            </tr>
-          ))}
-        </tbody>
-      </table>
+    <div className="bg-white max-w-[30rem] min-[900px]:pt-[4.5rem] min-[1075px]:max-w-[120rem] p-10 shadow-lg shadow-slate-400 rounded-xl ">
+      <div className=" ">
+        <CustomerList datas={datas} />
+      </div>
     </div>
   );
 }

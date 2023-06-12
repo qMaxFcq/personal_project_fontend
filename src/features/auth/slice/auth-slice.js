@@ -34,6 +34,10 @@ export const addCustomer = createAsyncThunk(
   }
 );
 
+export const logout = createAsyncThunk("/logout", async () => {
+  removeAccessToken();
+});
+
 export const login = createAsyncThunk("/login", async (input, thunkApi) => {
   try {
     const res = await authService.login(input);
@@ -75,6 +79,10 @@ const authSlice = createSlice({
       .addCase(addCustomer.rejected, (state, action) => {
         state.error = action.payload;
         state.loading = false;
+      })
+      .addCase(logout.fulfilled, (state) => {
+        state.isAuthenticated = false;
+        state.user = null;
       }),
 });
 
