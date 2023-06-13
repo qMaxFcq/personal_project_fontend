@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { EllipsisIcon } from "../../../icons/index";
+import CustomerMoreDetail from "./CustomerMoreDetail";
 
 export default function CustomerList({ datas }) {
   const [selectedRow, setSelectedRow] = useState(null);
@@ -25,8 +26,9 @@ export default function CustomerList({ datas }) {
             <td>{index + 1}</td>
             <td>{data.firstName}</td>
             <td>{data.lastName}</td>
-            <td>{data.typeId}</td>
-            <td>{data.statusId}</td>
+            <td>{data.Typeorder.typeOrder}</td>
+            <td>{data.Statuscustomer.statusName}</td>
+
             <div
               className="hover:bg-gray-200 rounded-full h-9 w-9 flex items-center justify-center"
               role="button"
@@ -35,7 +37,10 @@ export default function CustomerList({ datas }) {
               <EllipsisIcon className="fill-gray-500" />
             </div>
             {selectedRow === index && (
-              <ul className="absolute bg-white rounded-xl border shadow-lg p-2 text-sm w-24">
+              <ul className="absolute bg-white rounded-xl border shadow-lg p-2 text-sm w-28">
+                <li className="p-1 hover:bg-blue-200 rounded-lg font-mono cursor-pointer bg-blue-400 mb-2">
+                  <CustomerMoreDetail datas={data.id} />
+                </li>
                 <li className="p-2 hover:bg-blue-200 rounded-lg font-mono cursor-pointer bg-blue-400 mb-2">
                   Edit
                 </li>

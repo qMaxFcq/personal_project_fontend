@@ -9,8 +9,8 @@ import InputErrorMessage from "./InputErrorMessage";
 
 const initialInput = {
   adminName: "",
-  firstName: "",
-  lastName: "",
+  adminfirstName: "",
+  adminlastName: "",
   adminEmail: "",
   password: "",
   confirmpassword: "",
@@ -60,26 +60,30 @@ export default function RegisterForm({ onSuccess }) {
         <div className="flex gap-3">
           <RegisterInput
             type="text"
-            name="firstName"
+            name="adminfirstName"
             placeholder="First Name"
-            value={input.firstName}
+            value={input.adminfirstName}
             onChange={handleChangeInput}
-            isInvalid={error.firstName}
+            isInvalid={error.adminfirstName}
           />
 
           <RegisterInput
             type="text"
-            name="lastName"
+            name="adminlastName"
             placeholder="Last Name"
-            value={input.lastName}
+            value={input.adminlastName}
             onChange={handleChangeInput}
-            isInvalid={error.lastName}
+            isInvalid={error.adminlastName}
           />
         </div>
 
         <div className="flex gap-32 -m-2">
-          {error.firstName && <InputErrorMessage message={error.firstName} />}
-          {error.lastName && <InputErrorMessage message={error.lastName} />}
+          {error.adminfirstName && (
+            <InputErrorMessage message={error.adminfirstName} />
+          )}
+          {error.adminlastName && (
+            <InputErrorMessage message={error.adminlastName} />
+          )}
         </div>
         <div>
           <RegisterInput

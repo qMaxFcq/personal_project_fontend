@@ -4,10 +4,10 @@ const registerSchema = Joi.object({
   adminName: Joi.string().required().messages({
     "string.empty": "Admin Name is required.",
   }),
-  firstName: Joi.string().required().messages({
+  adminfirstName: Joi.string().required().messages({
     "string.empty": "First Name is required.",
   }),
-  lastName: Joi.string().required().messages({
+  adminlastName: Joi.string().required().messages({
     "string.empty": "Last Name is required.",
   }),
 

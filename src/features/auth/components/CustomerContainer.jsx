@@ -7,8 +7,8 @@ import CustomerSearch from "./CustomerSearch";
 
 export default function CustomerContainer() {
   return (
-    <div className="">
-      <h1>Customer Relationship Management</h1>
+    <div>
+      <h1 className="text-6xl">Customer Relationship Management</h1>
 
       <div className="flex justify-end">
         <AddCustomerContainer />
