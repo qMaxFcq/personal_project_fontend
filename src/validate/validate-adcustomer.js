@@ -1,37 +1,37 @@
 import Joi from "joi";
 
 const addCustomerSchema = Joi.object({
-  customerId: Joi.string().required().messages({
+  customerId: Joi.string().required().trim().messages({
     "string.empty": "Customer ID is required.",
   }),
-  firstName: Joi.string().required().messages({
+  firstName: Joi.string().required().trim().messages({
     "string.empty": "first Name is required.",
   }),
-  lastName: Joi.string().required().messages({
+  lastName: Joi.string().required().trim().messages({
     "string.empty": "Last Name is required.",
   }),
-  phoneNumber: Joi.string().required().messages({
+  phoneNumber: Joi.string().required().trim().messages({
     "string.empty": "Phone Number is required.",
   }),
-  dateOrder: Joi.string().required().messages({
+  dateOrder: Joi.string().required().trim().messages({
     "string.empty": "Date is required.",
   }),
-  orderDetail: Joi.string().required().messages({
+  orderDetail: Joi.string().required().trim().messages({
     "string.empty": "Date is required.",
   }),
-  dateOrder: Joi.string().required().messages({
+  dateOrder: Joi.string().required().trim().messages({
     "string.empty": "Date is required.",
   }),
-  shopId: Joi.string().required().messages({
+  shopId: Joi.string().required().trim().messages({
     "string.empty": "shopId is required.",
   }),
-  phonerecId: Joi.string().required().messages({
+  phonerecId: Joi.string().required().trim().messages({
     "string.empty": "phonerecId is required.",
   }),
-  typeId: Joi.string().required().messages({
+  typeId: Joi.string().required().trim().messages({
     "string.empty": "typeId is required.",
   }),
-  statusId: Joi.string().required().messages({
+  statusId: Joi.string().required().trim().messages({
     "string.empty": "statusId is required.",
   }),
 });

@@ -2,16 +2,18 @@ import React, { useState } from "react";
 import { EllipsisIcon } from "../../../icons/index";
 import CustomerMoreDetail from "./CustomerMoreDetail";
 import CustomerDelete from "./CustomerDelete";
+import CustomerEdit from "./CustomerEdit";
 
 export default function CustomerList({ datas }) {
   const [selectedRow, setSelectedRow] = useState(null);
+  const [close, setClose] = useState(true);
 
   const handleToggle = (rowIndex) => {
     setSelectedRow(rowIndex === selectedRow ? null : rowIndex);
   };
 
   return (
-    <div className="flex justify-center ">
+    <div className="flex justify- w-[45rem] ">
       <table>
         <thead>
           <tr>
@@ -37,19 +39,21 @@ export default function CustomerList({ datas }) {
             >
               <EllipsisIcon className="fill-gray-500" />
             </div>
-            {selectedRow === index && (
-              <ul className="absolute bg-white rounded-xl border shadow-lg p-2 text-sm w-28">
-                <li className="p-1 hover:bg-blue-200 rounded-lg font-mono cursor-pointer bg-blue-400 mb-2">
-                  <CustomerMoreDetail datas={data.id} />
-                </li>
-                <li className="p-2 hover:bg-blue-200 rounded-lg font-mono cursor-pointer bg-blue-400 mb-2">
-                  Edit
-                </li>
-                <li className="p-2 hover:bg-red-200 rounded-lg font-mono cursor-pointer bg-red-500">
-                  <CustomerDelete datas={data.id} />
-                </li>
-              </ul>
-            )}
+            <div>
+              {selectedRow === index && (
+                <ul className="absolute bg-white rounded-xl border shadow-lg p-2 text-sm w-28">
+                  <li className="p-1 hover:bg-blue-200 rounded-lg font-mono cursor-pointer bg-blue-400 mb-2">
+                    <CustomerMoreDetail datas={data.id} />
+                  </li>
+                  <li className="p-2 hover:bg-blue-200 rounded-lg font-mono cursor-pointer bg-blue-400 mb-2">
+                    <CustomerEdit datas={data.id} />
+                  </li>
+                  <li className="p-2 hover:bg-red-200 rounded-lg font-mono cursor-pointer bg-red-500">
+                    <CustomerDelete datas={data.id} />
+                  </li>
+                </ul>
+              )}
+            </div>
           </tr>
         ))}
       </table>

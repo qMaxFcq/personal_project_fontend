@@ -6,13 +6,6 @@ export default function CustomerDeleteWithId({ datas }) {
   // console.log(datas);
   const [value, setValue] = useState([]);
 
-  const hdlDelete = (datas) => {
-    const delCustomer = async () => {
-      const res = await axios.delete(`http://localhost:8888/admin/${datas}`);
-    };
-    delCustomer();
-  };
-
   useEffect(() => {
     const fetchCustomer = async () => {
       const res = await axios.get(
@@ -21,10 +14,17 @@ export default function CustomerDeleteWithId({ datas }) {
       setValue(res.data);
     };
     fetchCustomer();
-  });
+  }, []);
+
+  const hdlDelete = () => {
+    const delCustomer = async () => {
+      const res = await axios.delete(`http://localhost:8888/admin/${datas}`);
+    };
+    delCustomer();
+  };
 
   return (
-    <form onSubmit={hdlDelete(datas)}>
+    <form>
       <div className="text-2xl flex flex-col">
         <div>Customer ID : {value.customerId}</div>
         <div>
@@ -32,7 +32,10 @@ export default function CustomerDeleteWithId({ datas }) {
           <div>Last Name : {value.lastName}</div>
         </div>
         <div className="flex gap-3 mt-3">
-          <button className="bg-red-500 text-white w-full leading-[3rem] rounded-md text-xl font-bold">
+          <button
+            className="bg-red-500 text-white w-full leading-[3rem] rounded-md text-xl font-bold"
+            onClick={hdlDelete}
+          >
             Confirm Delete
           </button>
           <button className="bg-blue-500 text-white w-full leading-[3rem] rounded-md text-xl font-bold">

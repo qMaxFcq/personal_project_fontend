@@ -21,8 +21,8 @@ export default function CustomerMain() {
   }, []);
 
   return (
-    <div className="bg-white max-w-[30rem] min-[900px]:pt-[4.5rem] min-[1075px]:max-w-[120rem] p-10 shadow-lg shadow-slate-400 rounded-xl ">
-      <div className=" ">
+    <div className="bg-white p-3 shadow-lg shadow-slate-400 rounded-xl ">
+      <div>
         <CustomerList datas={datas} />
       </div>
     </div>

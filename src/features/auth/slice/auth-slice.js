@@ -38,7 +38,7 @@ export const addCustomer = createAsyncThunk(
   async (input, thunkApi) => {
     try {
       const res = await authService.addcustomer(input);
-      // setAccessToken(res.data.accessToken);
+
       const resFetchMe = await authService.fetchMe();
       return resFetchMe.data.user;
     } catch (err) {

@@ -8,7 +8,7 @@ export default function AddCustomerContainer() {
   return (
     <div>
       <button
-        className="bg-blue-500 text-white rounded-md px-4 leading-[3rem] font-mono hover:bg-blue-600 tracking-wide mb-5 "
+        className="bg-blue-500 text-white rounded-md px-4 leading-[3rem] font-mono hover:bg-blue-600 tracking-wide mb-5 mt-5 "
         onClick={() => setOpen(true)}
       >
         Add Customer
