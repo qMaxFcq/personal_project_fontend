@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { EllipsisIcon } from "../../../icons/index";
 import CustomerMoreDetail from "./CustomerMoreDetail";
+import CustomerDelete from "./CustomerDelete";
 
 export default function CustomerList({ datas }) {
   const [selectedRow, setSelectedRow] = useState(null);
@@ -45,7 +46,7 @@ export default function CustomerList({ datas }) {
                   Edit
                 </li>
                 <li className="p-2 hover:bg-red-200 rounded-lg font-mono cursor-pointer bg-red-500">
-                  Delete
+                  <CustomerDelete datas={data.id} />
                 </li>
               </ul>
             )}

@@ -77,7 +77,7 @@ export default function AddCustomerForm({ onSuccess }) {
           />
         </div>
 
-        <div className="flex gap-32 -m-2">
+        <div className="flex gap-16 -m-2">
           {error.firstName && <InputErrorMessage message={error.firstName} />}
           {error.lastName && <InputErrorMessage message={error.lastName} />}
         </div>
@@ -115,45 +115,61 @@ export default function AddCustomerForm({ onSuccess }) {
             <InputErrorMessage message={error.orderDetail} />
           )}
         </div>
-        <div>
-          <AddCustomerInput
+        <div className="flex justify-between text-lg gap-2">
+          <select
             name="shopId"
-            placeholder="Shop Name"
             value={input.shopId}
             onChange={handleChangeInput}
-            isInvalid={error.shopId}
-          />
-          {error.shopId && <InputErrorMessage message={error.shopId} />}
-        </div>
-        <div>
-          <AddCustomerInput
+            className={error.shopId ? "invalid" : ""}
+          >
+            <option value="">Shop</option>
+            <option value="1">Never Sleep</option>
+            <option value="2">HengHengHeng</option>
+            <option value="3">MookieGoldenMonkey</option>
+            <option value="4">MoneyQuick</option>
+            {error.shopId && <InputErrorMessage message={error.shopId} />}
+          </select>
+          <select
             name="phonerecId"
-            placeholder="Phone Name"
             value={input.phonerecId}
             onChange={handleChangeInput}
-            isInvalid={error.phonerecId}
-          />
-          {error.phonerecId && <InputErrorMessage message={error.phonerecId} />}
+            className={error.phonerecId ? "invalid" : ""}
+          >
+            <option value="">Phone</option>
+            <option value="1">Never Sleep </option>
+            <option value="2">HengHengHeng </option>
+            <option value="3">MookieGoldenMonkey </option>
+            <option value="4">MoneyQuick </option>
+            {error.phonerecId && (
+              <InputErrorMessage message={error.phonerecId} />
+            )}
+          </select>
         </div>
-        <div>
-          <AddCustomerInput
+
+        <div className="flex justify-between text-lg">
+          <select
             name="typeId"
-            placeholder="Type"
             value={input.typeId}
             onChange={handleChangeInput}
-            isInvalid={error.typeId}
-          />
-          {error.typeId && <InputErrorMessage message={error.typeId} />}
-        </div>
-        <div>
-          <AddCustomerInput
+            className={error.typeId ? "invalid" : ""}
+          >
+            <option value="">Type</option>
+            <option value="1">Sell</option>
+            <option value="2">Buy</option>
+            {error.typeId && <InputErrorMessage message={error.typeId} />}
+          </select>
+
+          <select
             name="statusId"
-            placeholder="Status"
             value={input.statusId}
             onChange={handleChangeInput}
-            isInvalid={error.statusId}
-          />
-          {error.statusId && <InputErrorMessage message={error.statusId} />}
+            className={error.statusId ? "invalid" : ""}
+          >
+            <option value="">Status</option>
+            <option value="1">OK</option>
+            <option value="2">NOT OK</option>
+            {error.statusId && <InputErrorMessage message={error.statusId} />}
+          </select>
         </div>
       </div>
       <div>
