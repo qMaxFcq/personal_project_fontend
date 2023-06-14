@@ -6,6 +6,7 @@ export default function RegisterInput({
   onChange,
   name,
   isInvalid,
+  min,
 }) {
   const defaultClassName =
     "block w-full rounded-md border px-3 py-1.5 leading-6 outline-none text-xl focus:ring";
@@ -23,6 +24,7 @@ export default function RegisterInput({
       value={value}
       onChange={onChange}
       name={name}
+      min={min}
     />
   );
 }

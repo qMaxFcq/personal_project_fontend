@@ -103,13 +103,21 @@ const authSlice = createSlice({
         state.error = action.payload;
         state.initialLoading = false;
       })
-      .addCase(fetchMe.pending, (state, action) => {
+      .addCase(fetchMe.pending, (state) => {
         state.initialLoading = true;
       })
       .addCase(logout.fulfilled, (state) => {
         state.isAuthenticated = false;
         state.user = null;
       }),
+  // .addCase(deletecustomer.fulfilled, (state) => {
+  //   state.user = action.payload;
+  // })
+  // .addCase(deletecustomer.rejected, (state, action) => {
+  //   state.error = action.payload;
+  //   console.log(action.payload);
+  //   state.initialLoading = false;
+  // }),
 });
 
 export default authSlice.reducer;

@@ -1,13 +1,11 @@
 import React from "react";
 import axios from "axios";
 import { useEffect, useState } from "react";
-
-import { toast } from "react-toastify";
-import { useDispatch } from "react-redux";
-
 import AddCustomerInput from "./AddCustomerInput";
 import InputErrorMessage from "./InputErrorMessage";
 import validateEditCustomer from "../../../validate/validate-updatecustomer";
+import { toast } from "react-toastify";
+import { useDispatch } from "react-redux";
 
 export default function CustomerEditWithId({ datas }) {
   const [valueupdate, setValueupdate] = useState([]);
@@ -29,17 +27,18 @@ export default function CustomerEditWithId({ datas }) {
 
   const hdlEditCustomer = async (datas) => {
     const editCustomer = async () => {
-      const res = await axios.post(
+      const res = await axios.put(
         `http://localhost:8888/admin/${datas}`,
         valueupdate
       );
     };
     editCustomer();
+    toast("Update Done");
   };
 
   return (
     <form>
-      <div className="grid gap-3 font-mono text-xl ">
+      <div className="grid gap-3 font-mono">
         <div>
           <AddCustomerInput
             name="customerId"
@@ -81,10 +80,12 @@ export default function CustomerEditWithId({ datas }) {
         </div>
         <div>
           <AddCustomerInput
+            type="date"
             name="dateOrder"
             value={valueupdate.dateOrder}
             onChange={handleChangeInput}
             isInvalid={error.dateOrder}
+            min={new Date().toISOString().split("T")[0]}
           />
           {error.dateOrder && <InputErrorMessage message={error.dateOrder} />}
         </div>
@@ -100,7 +101,8 @@ export default function CustomerEditWithId({ datas }) {
             <InputErrorMessage message={error.orderDetail} />
           )}
         </div>
-        <div className="flex">
+
+        <div className="flex justify-between text-lg gap-2">
           <select
             name="shopId"
             value={valueupdate.shopId}
@@ -129,6 +131,9 @@ export default function CustomerEditWithId({ datas }) {
               <InputErrorMessage message={error.phonerecId} />
             )}
           </select>
+        </div>
+
+        <div className="flex justify-between text-lg">
           <select
             name="typeId"
             value={valueupdate.typeId}
@@ -156,12 +161,12 @@ export default function CustomerEditWithId({ datas }) {
       </div>
       <div className="flex gap-3 mt-3">
         <button
-          className="bg-green-500 hover:bg-green-600 text-white w-full leading-[3rem] rounded-md text-xl font-bold mt-3"
-          onSubmit={hdlEditCustomer(datas)}
+          className="bg-green-500 hover:bg-green-600 text-white w-full leading-[3rem] rounded-md text-xl font-bold mt-3 flex justify-center hover:cursor-pointer"
+          onClick={() => hdlEditCustomer(datas)}
         >
           Update Customer
         </button>
-        <button className="bg-red-500 hover:bg-green-600 text-white w-full leading-[3rem] rounded-md text-xl font-bold mt-3">
+        <button className="bg-red-500 hover:bg-red-600 text-white w-full leading-[3rem] rounded-md text-xl font-bold mt-3 flex justify-center hover:cursor-pointer">
           Cancel Customer
         </button>
       </div>

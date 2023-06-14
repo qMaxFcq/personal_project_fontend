@@ -48,7 +48,7 @@ export default function AddCustomerForm({ onSuccess }) {
   };
   return (
     <form onSubmit={handleSubmitForm}>
-      <div className="grid gap-3 font-mono text-xl ">
+      <div className="grid gap-3 font-mono text-xl w-[10rem]">
         <div>
           <AddCustomerInput
             name="customerId"
@@ -159,8 +159,8 @@ export default function AddCustomerForm({ onSuccess }) {
               className={error.typeId ? "invalid" : ""}
             >
               <option value="">Type</option>
-              <option value="1">Sell</option>
-              <option value="2">Buy</option>
+              <option value="1">Buy</option>
+              <option value="2">Sell</option>
               {error.typeId && <InputErrorMessage message={error.typeId} />}
             </select>
           </div>
@@ -173,6 +173,7 @@ export default function AddCustomerForm({ onSuccess }) {
             >
               <option value="">Status</option>
               <option value="1">OK</option>
+              {/* <option value="2">NOT SURE</option> */}
               <option value="2">NOT OK</option>
               {error.statusId && <InputErrorMessage message={error.statusId} />}
             </select>

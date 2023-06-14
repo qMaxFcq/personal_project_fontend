@@ -4,7 +4,8 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import CustomerList from "./CustomerList";
 
-export default function CustomerMain() {
+export default function CustomerMain({}) {
+  // console.log(user);
   const [datas, setData] = useState([]);
 
   useEffect(() => {

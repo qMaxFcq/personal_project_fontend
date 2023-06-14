@@ -1,5 +1,6 @@
 import React from "react";
 import RegisterForm from "../features/auth/components/RegisterForm";
+import LoginForm from "../features/auth/components/LoginForm";
 
 export default function LoginPage() {
   return (
@@ -16,10 +17,13 @@ export default function LoginPage() {
           Customer Relationship Management
         </h1>
 
-        <h2 className="text-2xl font-semibold text-center ">
+        <h2 className="text-3xl font-mono text-center ">
           <div className="">
             <RegisterForm />
           </div>
+          <button className="bg-blue-500 hover:bg-blue-600 text-white w-full leading-[3rem] rounded-md text-xl font-bold mt-2">
+            <a href="http://localhost:5173/login">Login</a>
+          </button>
         </h2>
       </div>
     </div>

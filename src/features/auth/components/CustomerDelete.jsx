@@ -3,6 +3,7 @@ import Modal from "../../../components/Modal";
 import CustomerDeleteWithId from "./CustomerDeleteWithId";
 
 export default function CustomerDelete({ datas }) {
+  console.log(datas);
   const [open, setOpen] = useState(false);
   return (
     <div>

@@ -21,7 +21,7 @@ export default function LoginForm() {
   const onSubmit = async (data) => {
     try {
       await dispatch(login(data)).unwrap();
-      toast("Susucc");
+      toast("Login Success");
     } catch (err) {
       toast.error("Invalid Admid Name or Password");
     }

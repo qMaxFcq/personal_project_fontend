@@ -4,7 +4,6 @@ import axios from "axios";
 import { Link } from "react-router-dom";
 import { WannIcon } from "../icons";
 import { logout } from "../features/auth/slice/auth-slice";
-import { getAccessToken } from "../utils/localstorage";
 
 export default function Header() {
   const [value, setValue] = useState([]);
@@ -18,7 +17,10 @@ export default function Header() {
     };
     fetchAdmin();
   }, []);
+
   const [isOpen, setIsOpen] = useState(false);
+
+  const dispatch = useDispatch();
 
   const handleToggle = () => {
     setIsOpen(!isOpen);
@@ -35,11 +37,11 @@ export default function Header() {
         <div>
           <button>Home</button>
         </div>
-        |<button onClick={handleToggle}>Profile</button>
+        |<button onClick={handleToggle}>{value.adminfirstName}</button>
         {isOpen && (
           <ul className="absolute m-9 ml-44 bg-white rounded-xl border shadow-lg p-2 text-sm w-44">
             <li className="p-2 hover:bg-gray-200 rounded-lg font-mono cursor-pointer">
-              <h1>Profile : {value.adminfirstName}</h1>
+              <h1>Edit Profile</h1>
             </li>
             <li
               className="p-2 hover:bg-gray-200 rounded-lg font-mono cursor-pointer"

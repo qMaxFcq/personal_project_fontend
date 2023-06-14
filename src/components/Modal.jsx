@@ -14,7 +14,7 @@ export default function Modal({ title, children, width = 40, open, onClose }) {
       {open && (
         <>
           <div className="fixed inset-0 bg-white opacity-70 z-20"></div>
-          <div className="fixed inset-0 z-30" onMouseUp={onClose}>
+          <div className="fixed inset-0 z-30">
             <div className="flex justify-center items-center min-h-full p-4">
               <div
                 style={{ maxWidth: `${width}rem` }}
@@ -23,9 +23,9 @@ export default function Modal({ title, children, width = 40, open, onClose }) {
               >
                 <div className="flex justify-between items-center p-4 border-b text-xl">
                   <div className="invisible">&#10005;</div>
-                  <div className="font-bold">{title}</div>
+                  <div className="font-mono">{title}</div>
                   <div
-                    className="text-gray-500 font-semibold hover:text-gray-600"
+                    className="text-gray-500 font-mono hover:text-gray-600"
                     role="button"
                     onClick={onClose}
                   >
