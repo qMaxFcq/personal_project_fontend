@@ -21,9 +21,11 @@ export default function CustomerMain() {
   }, []);
 
   return (
-    <div className="bg-white p-3 shadow-lg shadow-slate-400 rounded-xl ">
-      <div>
-        <CustomerList datas={datas} />
+    <div className="flex flex-col">
+      <div className="bg-white-100 p-3 shadow-lg shadow-slate-400 rounded-xl ">
+        <div>
+          <CustomerList datas={datas} />
+        </div>
       </div>
     </div>
   );

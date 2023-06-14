@@ -8,7 +8,7 @@ export default function RegisterInput({
   isInvalid,
 }) {
   const defaultClassName =
-    "block w-full rounded-md border px-3 py-1.5 leading-6 outline-none text-sm focus:ring";
+    "block w-full rounded-md border px-3 py-1.5 leading-6 outline-none text-xl focus:ring";
   const className = createClasses(
     defaultClassName,
     isInvalid

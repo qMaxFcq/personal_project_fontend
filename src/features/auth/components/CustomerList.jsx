@@ -5,27 +5,30 @@ import CustomerDelete from "./CustomerDelete";
 import CustomerEdit from "./CustomerEdit";
 
 export default function CustomerList({ datas }) {
+  console.log(datas);
   const [selectedRow, setSelectedRow] = useState(null);
-  const [close, setClose] = useState(true);
 
   const handleToggle = (rowIndex) => {
     setSelectedRow(rowIndex === selectedRow ? null : rowIndex);
   };
 
   return (
-    <div className="flex justify- w-[45rem] ">
+    <div>
       <table>
         <thead>
           <tr>
-            <th>No.</th>
-            <th>First Name</th>
-            <th>Last Name</th>
-            <th>Type</th>
-            <th>Status</th>
+            <th className="w-[5rem]">No.</th>
+            <th className="w-[13rem]">First Name</th>
+            <th className="w-[13rem]">Last Name</th>
+            <th className="w-[6rem]">Type</th>
+            <th className="w-[6rem]">Status</th>
           </tr>
         </thead>
         {datas.map((data, index) => (
-          <tr key={data.id}>
+          <tr
+            key={data.id}
+            className="hover:bg-slate-200 cursor-pointer rounded-lg"
+          >
             <td>{index + 1}</td>
             <td>{data.firstName}</td>
             <td>{data.lastName}</td>
@@ -33,7 +36,7 @@ export default function CustomerList({ datas }) {
             <td>{data.Statuscustomer.statusName}</td>
 
             <div
-              className="hover:bg-gray-200 rounded-full h-9 w-9 flex items-center justify-center"
+              className="hover:bg-slate-200 rounded-full h-9  flex items-center justify-center w-[4rem]"
               role="button"
               onClick={() => handleToggle(index)}
             >

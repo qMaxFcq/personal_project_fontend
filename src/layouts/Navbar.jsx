@@ -1,13 +1,24 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import axios from "axios";
 import { Link } from "react-router-dom";
 import { WannIcon } from "../icons";
 import { logout } from "../features/auth/slice/auth-slice";
+import { getAccessToken } from "../utils/localstorage";
 
 export default function Header() {
-  const [isOpen, setIsOpen] = useState(false);
+  const [value, setValue] = useState([]);
 
-  const dispatch = useDispatch();
+  useEffect(() => {
+    const fetchAdmin = async () => {
+      const res = await axios.get("http://localhost:8888/admin");
+
+      setValue(res.data);
+      // console.log(res.data);
+    };
+    fetchAdmin();
+  }, []);
+  const [isOpen, setIsOpen] = useState(false);
 
   const handleToggle = () => {
     setIsOpen(!isOpen);
@@ -24,11 +35,11 @@ export default function Header() {
         <div>
           <button>Home</button>
         </div>
-        |<button onClick={handleToggle}>Proflie</button>
+        |<button onClick={handleToggle}>Profile</button>
         {isOpen && (
-          <ul className="absolute m-9 ml-44 bg-white rounded-xl border shadow-lg p-2 text-sm w-36">
+          <ul className="absolute m-9 ml-44 bg-white rounded-xl border shadow-lg p-2 text-sm w-44">
             <li className="p-2 hover:bg-gray-200 rounded-lg font-mono cursor-pointer">
-              Edit Profile
+              <h1>Profile : {value.adminfirstName}</h1>
             </li>
             <li
               className="p-2 hover:bg-gray-200 rounded-lg font-mono cursor-pointer"

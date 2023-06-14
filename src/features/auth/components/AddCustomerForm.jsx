@@ -48,7 +48,7 @@ export default function AddCustomerForm({ onSuccess }) {
   };
   return (
     <form onSubmit={handleSubmitForm}>
-      <div className="grid gap-3 font-mono">
+      <div className="grid gap-3 font-mono text-xl ">
         <div>
           <AddCustomerInput
             name="customerId"
@@ -59,7 +59,7 @@ export default function AddCustomerForm({ onSuccess }) {
           />
           {error.customerId && <InputErrorMessage message={error.customerId} />}
         </div>
-        <div className="flex gap-3">
+        <div className="flex flex-row gap-3">
           <AddCustomerInput
             name="firstName"
             placeholder="First Name"
@@ -100,6 +100,7 @@ export default function AddCustomerForm({ onSuccess }) {
             value={input.dateOrder}
             onChange={handleChangeInput}
             isInvalid={error.dateOrder}
+            min={new Date().toISOString().split("T")[0]}
           />
           {error.dateOrder && <InputErrorMessage message={error.dateOrder} />}
         </div>
@@ -110,66 +111,72 @@ export default function AddCustomerForm({ onSuccess }) {
             value={input.orderDetail}
             onChange={handleChangeInput}
             isInvalid={error.orderDetail}
+            type={new Date().toISOString().split("T")[0]}
           />
           {error.orderDetail && (
             <InputErrorMessage message={error.orderDetail} />
           )}
         </div>
-        <div className="flex justify-between text-lg gap-2">
-          <select
-            name="shopId"
-            value={input.shopId}
-            onChange={handleChangeInput}
-            className={error.shopId ? "invalid" : ""}
-          >
-            <option value="">Shop</option>
-            <option value="1">Never Sleep</option>
-            <option value="2">HengHengHeng</option>
-            <option value="3">MookieGoldenMonkey</option>
-            <option value="4">MoneyQuick</option>
-            {error.shopId && <InputErrorMessage message={error.shopId} />}
-          </select>
-          <select
-            name="phonerecId"
-            value={input.phonerecId}
-            onChange={handleChangeInput}
-            className={error.phonerecId ? "invalid" : ""}
-          >
-            <option value="">Phone</option>
-            <option value="1">Never Sleep </option>
-            <option value="2">HengHengHeng </option>
-            <option value="3">MookieGoldenMonkey </option>
-            <option value="4">MoneyQuick </option>
-            {error.phonerecId && (
-              <InputErrorMessage message={error.phonerecId} />
-            )}
-          </select>
-        </div>
+        <div className="flex">
+          <div>
+            <select
+              name="shopId"
+              value={input.shopId}
+              onChange={handleChangeInput}
+              className={error.shopId ? "invalid" : ""}
+            >
+              <option value="">Shop</option>
+              <option value="1">Never Sleep</option>
+              <option value="2">HengHengHeng</option>
+              <option value="3">MookieGoldenMonkey</option>
+              <option value="4">MoneyQuick</option>
+              {error.shopId && <InputErrorMessage message={error.shopId} />}
+            </select>
+          </div>
+          <div>
+            <select
+              name="phonerecId"
+              value={input.phonerecId}
+              onChange={handleChangeInput}
+              className={error.phonerecId ? "invalid" : ""}
+            >
+              <option value="">Phone</option>
+              <option value="1">Never Sleep </option>
+              <option value="2">HengHengHeng </option>
+              <option value="3">MookieGoldenMonkey </option>
+              <option value="4">MoneyQuick </option>
+              {error.phonerecId && (
+                <InputErrorMessage message={error.phonerecId} />
+              )}
+            </select>
+          </div>
 
-        <div className="flex justify-between text-lg">
-          <select
-            name="typeId"
-            value={input.typeId}
-            onChange={handleChangeInput}
-            className={error.typeId ? "invalid" : ""}
-          >
-            <option value="">Type</option>
-            <option value="1">Sell</option>
-            <option value="2">Buy</option>
-            {error.typeId && <InputErrorMessage message={error.typeId} />}
-          </select>
-
-          <select
-            name="statusId"
-            value={input.statusId}
-            onChange={handleChangeInput}
-            className={error.statusId ? "invalid" : ""}
-          >
-            <option value="">Status</option>
-            <option value="1">OK</option>
-            <option value="2">NOT OK</option>
-            {error.statusId && <InputErrorMessage message={error.statusId} />}
-          </select>
+          <div>
+            <select
+              name="typeId"
+              value={input.typeId}
+              onChange={handleChangeInput}
+              className={error.typeId ? "invalid" : ""}
+            >
+              <option value="">Type</option>
+              <option value="1">Sell</option>
+              <option value="2">Buy</option>
+              {error.typeId && <InputErrorMessage message={error.typeId} />}
+            </select>
+          </div>
+          <div>
+            <select
+              name="statusId"
+              value={input.statusId}
+              onChange={handleChangeInput}
+              className={error.statusId ? "invalid" : ""}
+            >
+              <option value="">Status</option>
+              <option value="1">OK</option>
+              <option value="2">NOT OK</option>
+              {error.statusId && <InputErrorMessage message={error.statusId} />}
+            </select>
+          </div>
         </div>
       </div>
       <div>

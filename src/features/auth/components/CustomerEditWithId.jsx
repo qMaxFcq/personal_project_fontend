@@ -39,7 +39,7 @@ export default function CustomerEditWithId({ datas }) {
 
   return (
     <form>
-      <div className="grid gap-3 font-mono">
+      <div className="grid gap-3 font-mono text-xl ">
         <div>
           <AddCustomerInput
             name="customerId"
@@ -100,8 +100,7 @@ export default function CustomerEditWithId({ datas }) {
             <InputErrorMessage message={error.orderDetail} />
           )}
         </div>
-
-        <div className="flex justify-between text-lg gap-2">
+        <div className="flex">
           <select
             name="shopId"
             value={valueupdate.shopId}
@@ -130,9 +129,6 @@ export default function CustomerEditWithId({ datas }) {
               <InputErrorMessage message={error.phonerecId} />
             )}
           </select>
-        </div>
-
-        <div className="flex justify-between text-lg">
           <select
             name="typeId"
             value={valueupdate.typeId}
