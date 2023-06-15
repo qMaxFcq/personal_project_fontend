@@ -7,9 +7,9 @@ import validateEditCustomer from "../../../validate/validate-updatecustomer";
 import { toast } from "react-toastify";
 import { useDispatch } from "react-redux";
 
-export default function CustomerEditWithId({ datas }) {
+export default function CustomerEditWithId({ datas,onSuccess }) {
   const [valueupdate, setValueupdate] = useState([]);
-  const [error, setError] = useState({});
+  // const [error, setError] = useState({});
 
   useEffect(() => {
     const fetchCustomer = async () => {
@@ -34,6 +34,7 @@ export default function CustomerEditWithId({ datas }) {
     };
     editCustomer();
     toast("Update Done");
+    onSuccess();
   };
 
   return (

@@ -6,6 +6,7 @@ import CustomerDelete from "./CustomerDelete";
 import CustomerEdit from "./CustomerEdit";
 
 export default function CustomerList({ datas }) {
+  
   const [selectedRow, setSelectedRow] = useState(null);
   const [admin, setAdmin] = useState(false);
 
@@ -47,7 +48,6 @@ export default function CustomerList({ datas }) {
             <td>{data.Typeorder.typeOrder}</td>
             <td>{data.Statuscustomer.statusName}</td>
 
-            
               <div
                 className="hover:bg-slate-200 rounded-full h-9  flex items-center justify-center w-[4rem]"
                 role="button"

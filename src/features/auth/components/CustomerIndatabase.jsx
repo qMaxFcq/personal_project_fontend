@@ -1,9 +1,14 @@
 import React from "react";
 import axios from "axios";
 import { useEffect, useState } from "react";
+import { useSelector } from "react-redux";
+import { data } from "autoprefixer";
 
 export default function CustomerIndatabase() {
   const [datas, setData] = useState([]);
+
+  const value = useSelector(state => state.auth.customerAll)
+
 
   useEffect(() => {
     const fetchCustomer = async () => {
@@ -12,14 +17,16 @@ export default function CustomerIndatabase() {
       );
       // console.log(res);
       setData(res.data);
-
-      // console.log(res.data);
+      
     };
     fetchCustomer();
+   
   }, []);
 
   const dataCount = datas?.length;
-  // console.log(datas);
+  const dataVal = value?.length
+  console.log(dataVal)
+  
 
   const getStatusNameCount = () => {
     let count = 0;

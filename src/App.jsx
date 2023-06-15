@@ -9,6 +9,8 @@ function App() {
   if (initialLoading) {
     return <Loading />;
   }
+
+  
   return (
     <>
       <Router />
