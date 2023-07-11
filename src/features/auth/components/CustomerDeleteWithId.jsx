@@ -2,27 +2,23 @@ import React from "react";
 import axios from "axios";
 import { toast } from "react-toastify";
 import { useDispatch } from "react-redux";
-import {delcustomer} from "../slice/auth-slice"
+import { delcustomer } from "../slice/auth-slice";
 // import { useEffect, useState } from "react";
 
-export default function CustomerDeleteWithId({ datas,onSuccess }) {
+export default function CustomerDeleteWithId({
+  datas,
+  onSuccess,
+  onDel,
+  onDel2,
+}) {
   // console.log('...............',onDel)
   const dispatch = useDispatch();
 
   const hdlDelete = async () => {
-    // const delCustomer = async () => {
-      
-    //   const res = await axios.delete(
-    //     `http://localhost:8888/admin/customer/${datas}`
-    //   );
-    // };
-    // delCustomer();
-    // e.preventDefault();
     await dispatch(delcustomer(datas.id)).unwrap();
-    // console.log(datas)
-    // toast("Delete Success");
     onSuccess();
-    // console.log('...............', onDel())
+    onDel();
+    onDel2();
   };
 
   return (

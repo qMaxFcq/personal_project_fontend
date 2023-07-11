@@ -1,54 +1,52 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import axios from "axios";
-import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
-import { data } from "autoprefixer";
 
-export default function CustomerIndatabase() {
+export default function CustomerIndatabase({ rerender, cusDelete, cusEdit }) {
   const [datas, setData] = useState([]);
+  const [dataCount, setDataCount] = useState(0);
+  const [statusNameCount, setStatusNameCount] = useState(0);
+  const [statusNameCount2, setStatusNameCount2] = useState(0);
 
-  const value = useSelector(state => state.auth.customerAll)
-
+  const value = useSelector((state) => state.auth.customerAll);
 
   useEffect(() => {
     const fetchCustomer = async () => {
-      const res = await axios.get(
-        `http://localhost:8888/admin/allcustomer${datas}`
-      );
-      // console.log(res);
+      const res = await axios.get("http://localhost:8888/admin/allcustomer");
       setData(res.data);
-      
     };
     fetchCustomer();
-   
-  }, []);
+  }, [rerender, cusDelete, cusEdit]);
 
-  const dataCount = datas?.length;
-  const dataVal = value?.length
-  console.log(dataVal)
-  
+  useEffect(() => {
+    setDataCount(datas.length);
+  }, [datas]);
 
-  const getStatusNameCount = () => {
-    let count = 0;
-    for (const item of datas) {
-      if (item.Statuscustomer.statusName === "OK") {
-        count++;
+  useEffect(() => {
+    const getStatusNameCount = () => {
+      let count = 0;
+      for (const item of datas) {
+        if (item.Statuscustomer.statusName === "OK") {
+          count++;
+        }
       }
-    }
-    return count;
-  };
-  const statusNameCount = getStatusNameCount();
+      return count;
+    };
+    setStatusNameCount(getStatusNameCount());
+  }, [datas]);
 
-  const getStatusNameCount2 = () => {
-    let count = 0;
-    for (const item of datas) {
-      if (item.Statuscustomer.statusName === "NOT OK") {
-        count++;
+  useEffect(() => {
+    const getStatusNameCount2 = () => {
+      let count = 0;
+      for (const item of datas) {
+        if (item.Statuscustomer.statusName === "NOT OK") {
+          count++;
+        }
       }
-    }
-    return count;
-  };
-  const statusNameCount2 = getStatusNameCount2();
+      return count;
+    };
+    setStatusNameCount2(getStatusNameCount2());
+  }, [datas]);
 
   return (
     <div>

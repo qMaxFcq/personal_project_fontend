@@ -9,10 +9,10 @@ import { useSelector } from "react-redux";
 
 export default function CustomerContainer() {
   const [admin, setAdmin] = useState(false);
-  const [rerender,setRerender] = useState(false)
-  
-  
-  
+  const [rerender, setRerender] = useState(false);
+  const [cusDelete, setDelete] = useState(false);
+  const [cusEdit, setEdit] = useState(false);
+
   useEffect(() => {
     const fetchAdmin = async () => {
       const res = await axios.get("http://localhost:8888/admin");
@@ -30,18 +30,26 @@ export default function CustomerContainer() {
 
       {admin && (
         <div className="flex justify-end">
-          <AddCustomerContainer onAdd={()=>setRerender(!rerender)} />
+          <AddCustomerContainer onAdd={() => setRerender(!rerender)} />
         </div>
       )}
 
       <div>
-        <CustomerIndatabase />
+        <CustomerIndatabase
+          rerender={rerender}
+          cusDelete={cusDelete}
+          cusEdit={cusEdit}
+        />
       </div>
       <div className="flex justify-end">
         <CustomerSearch />
       </div>
       <div className="flex justify-center ">
-        <CustomerMain   rerender={rerender} />
+        <CustomerMain
+          rerender={rerender}
+          onDel={() => setDelete(!cusDelete)}
+          onEdit={() => setEdit(!cusEdit)}
+        />
       </div>
     </div>
   );
