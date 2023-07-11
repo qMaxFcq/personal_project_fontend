@@ -1,14 +1,17 @@
 import React, { useState, useEffect } from "react";
-import { useSelector } from "react-redux";
+
 import axios from "axios";
 import AddCustomerContainer from "./AddCustomerContainer";
 import CustomerIndatabase from "./CustomerIndatabase";
 import CustomerMain from "./CustomerMain";
 import CustomerSearch from "./CustomerSearch";
+import { useSelector } from "react-redux";
 
 export default function CustomerContainer() {
   const [admin, setAdmin] = useState(false);
-  const [user, setUser] = useState([]);
+  const [rerender, setRerender] = useState(false);
+  const [cusDelete, setDelete] = useState(false);
+  const [cusEdit, setEdit] = useState(false);
 
   useEffect(() => {
     const fetchAdmin = async () => {
@@ -27,18 +30,26 @@ export default function CustomerContainer() {
 
       {admin && (
         <div className="flex justify-end">
-          <AddCustomerContainer />
+          <AddCustomerContainer onAdd={() => setRerender(!rerender)} />
         </div>
       )}
 
       <div>
-        <CustomerIndatabase />
+        <CustomerIndatabase
+          rerender={rerender}
+          cusDelete={cusDelete}
+          cusEdit={cusEdit}
+        />
       </div>
       <div className="flex justify-end">
         <CustomerSearch />
       </div>
       <div className="flex justify-center ">
-        <CustomerMain />
+        <CustomerMain
+          rerender={rerender}
+          onDel={() => setDelete(!cusDelete)}
+          onEdit={() => setEdit(!cusEdit)}
+        />
       </div>
     </div>
   );

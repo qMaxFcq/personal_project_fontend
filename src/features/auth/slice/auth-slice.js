@@ -1,6 +1,7 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import * as authService from "../../../api/auth-api";
 import { removeAccessToken, setAccessToken } from "../../../utils/localstorage";
+import { toast } from "react-toastify";
 
 const initialState = {
   isAuthenticated: false,
@@ -8,6 +9,7 @@ const initialState = {
   loading: false,
   user: null,
   initialLoading: false,
+  customerAll:[]
 };
 
 export const register = createAsyncThunk(
@@ -61,6 +63,17 @@ export const login = createAsyncThunk("/login", async (input, thunkApi) => {
   }
 });
 
+export const delcustomer = createAsyncThunk("/delete", async (input, thunkApi) => {
+  try {
+    // console.log(input)
+    const res = await authService.removecustomer(input);
+    console.log(res.data)
+    return res.data;
+  } catch (err) {
+    return thunkApi.rejectWithValue(err.response.data.message);
+  }
+});
+
 const authSlice = createSlice({
   name: "/",
   initialState,
@@ -109,15 +122,14 @@ const authSlice = createSlice({
       .addCase(logout.fulfilled, (state) => {
         state.isAuthenticated = false;
         state.user = null;
-      }),
-  // .addCase(deletecustomer.fulfilled, (state) => {
-  //   state.user = action.payload;
-  // })
-  // .addCase(deletecustomer.rejected, (state, action) => {
-  //   state.error = action.payload;
-  //   console.log(action.payload);
-  //   state.initialLoading = false;
-  // }),
+      }).addCase(delcustomer.pending, (state) => {
+        state.loading = true;
+      })
+      .addCase(delcustomer.fulfilled, (state,action) => {
+        state.isAuthenticated = true;
+        state.customerAll = action.payload
+      })
+
 });
 
 export default authSlice.reducer;

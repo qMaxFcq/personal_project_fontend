@@ -1,21 +1,28 @@
 import React from "react";
 import axios from "axios";
 import { toast } from "react-toastify";
+import { useDispatch } from "react-redux";
+import { delcustomer } from "../slice/auth-slice";
 // import { useEffect, useState } from "react";
 
-export default function CustomerDeleteWithId({ datas }) {
-  const hdlDelete = (datas) => {
-    const delCustomer = async () => {
-      const res = await axios.delete(
-        `http://localhost:8888/admin/customer/${datas}`
-      );
-    };
-    delCustomer();
-    toast("Delete Success");
+export default function CustomerDeleteWithId({
+  datas,
+  onSuccess,
+  onDel,
+  onDel2,
+}) {
+  // console.log('...............',onDel)
+  const dispatch = useDispatch();
+
+  const hdlDelete = async () => {
+    await dispatch(delcustomer(datas.id)).unwrap();
+    onSuccess();
+    onDel();
+    onDel2();
   };
 
   return (
-    <form>
+    <div>
       <div className="text-2xl flex flex-col">
         <div>Customer ID : {datas.customerId}</div>
         <div>
@@ -29,11 +36,11 @@ export default function CustomerDeleteWithId({ datas }) {
           >
             Confirm Delete
           </div>
-          <div className="bg-blue-500 text-white w-full leading-[3rem] rounded-md text-xl font-bold flex justify-center hover:cursor-pointer hover:bg-blue-600">
+          <div className="bg-blue-500 text-white w-full leading-[3rem] rounded-md text-xl font-bold flex justify-center hover:cursor-pointer hover:bg-blue-600 ">
             Cancel
           </div>
         </div>
       </div>
-    </form>
+    </div>
   );
 }

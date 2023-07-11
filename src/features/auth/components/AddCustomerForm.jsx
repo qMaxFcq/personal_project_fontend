@@ -20,7 +20,7 @@ const initialInput = {
   statusId: "",
 };
 
-export default function AddCustomerForm({ onSuccess }) {
+export default function AddCustomerForm({ onSuccess,onAdd }) {
   const [input, setInput] = useState(initialInput);
   const [error, setError] = useState({});
 
@@ -41,6 +41,9 @@ export default function AddCustomerForm({ onSuccess }) {
       await dispatch(addCustomer(input)).unwrap();
       toast.success("addCustomer successfully");
       onSuccess();
+      onAdd()
+      // console.log("................",onAdd(true))
+     
     } catch (err) {
       console.log(err);
       toast.error(err);

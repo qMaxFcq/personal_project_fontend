@@ -2,7 +2,7 @@ import { useState } from "react";
 import AddCustomerForm from "./AddCustomerForm";
 import Modal from "../../../components/Modal";
 
-export default function AddCustomerContainer() {
+export default function AddCustomerContainer({onAdd}) {
   const [open, setOpen] = useState(false);
 
   return (
@@ -14,7 +14,7 @@ export default function AddCustomerContainer() {
         Add Customer
       </button>
       <Modal title="Add Customer" open={open} onClose={() => setOpen(false)}>
-        <AddCustomerForm onSuccess={() => setOpen(false)} />
+        <AddCustomerForm onSuccess={() => setOpen(false)} onAdd={onAdd}/>
       </Modal>
     </div>
   );

@@ -5,9 +5,16 @@ import CustomerMoreDetail from "./CustomerMoreDetail";
 import CustomerDelete from "./CustomerDelete";
 import CustomerEdit from "./CustomerEdit";
 
-export default function CustomerList({ datas }) {
+export default function CustomerList({
+  datas,
+  onDel,
+  onDel2,
+  onEdit,
+  onEdit2,
+}) {
   const [selectedRow, setSelectedRow] = useState(null);
   const [admin, setAdmin] = useState(false);
+  const [open, setOpen] = useState(false);
 
   useEffect(() => {
     const fetchAdmin = async () => {
@@ -22,6 +29,7 @@ export default function CustomerList({ datas }) {
 
   const handleToggle = (rowIndex) => {
     setSelectedRow(rowIndex === selectedRow ? null : rowIndex);
+    setOpen(!open);
   };
 
   return (
@@ -46,35 +54,43 @@ export default function CustomerList({ datas }) {
             <td>{data.lastName}</td>
             <td>{data.Typeorder.typeOrder}</td>
             <td>{data.Statuscustomer.statusName}</td>
-
-            
-              <div
-                className="hover:bg-slate-200 rounded-full h-9  flex items-center justify-center w-[4rem]"
-                role="button"
-                onClick={() => handleToggle(index)}
-              >
-                <EllipsisIcon className="fill-gray-500" />
-              </div>
-            
-
-            <div>
-              {selectedRow === index && (
-                <ul className="absolute bg-white rounded-xl border shadow-lg p-2 text-sm w-28">
-                  <li className="p-1 hover:bg-blue-200 rounded-lg font-mono cursor-pointer bg-blue-400 mb-2">
-                    <CustomerMoreDetail datas={data.id} />
-                  </li>
-                 {admin && <ul>
-                  <li className="p-2 hover:bg-blue-200 rounded-lg font-mono cursor-pointer bg-blue-400 mb-2">
-                    <CustomerEdit datas={data.id} />
-                  </li>
-                  <li className="p-2 hover:bg-red-200 rounded-lg font-mono cursor-pointer bg-red-500">
-                    <CustomerDelete datas={data} />
-                  </li>
-                  </ul>}
-                 
-                </ul>
-              )}
+            <div
+              className="hover:bg-slate-200 rounded-full h-9  flex items-center justify-center w-[4rem]"
+              role="button"
+              onClick={() => handleToggle(index)}
+            >
+              <EllipsisIcon className="fill-gray-500" />
             </div>
+
+            {open && (
+              <div>
+                {selectedRow === index && (
+                  <ul className="absolute bg-white rounded-xl border shadow-lg p-2 text-sm w-28">
+                    <li className="p-1 hover:bg-blue-200 rounded-lg font-mono cursor-pointer bg-blue-400 mb-2">
+                      <CustomerMoreDetail datas={data.id} />
+                    </li>
+                    {admin && (
+                      <ul>
+                        <li className="p-2 hover:bg-blue-200 rounded-lg font-mono cursor-pointer bg-blue-400 mb-2">
+                          <CustomerEdit
+                            datas={data.id}
+                            onEdit={onEdit}
+                            onEdit2={onEdit2}
+                          />
+                        </li>
+                        <li className="p-2 hover:bg-red-200 rounded-lg font-mono cursor-pointer bg-red-500">
+                          <CustomerDelete
+                            datas={data}
+                            onDel={onDel}
+                            onDel2={onDel2}
+                          />
+                        </li>
+                      </ul>
+                    )}
+                  </ul>
+                )}
+              </div>
+            )}
           </tr>
         ))}
       </table>
